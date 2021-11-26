@@ -14,6 +14,9 @@ sleep 15
 echo "MySQL is up and running"
 
 # Seed data
-mysql -h localhost -P 3306 --protocol=tcp -u root -p test < ./my-sql/seed-data.sql
+time mysql -h localhost -P 3306 --protocol=tcp -u root -p test --password=pass < ./my-sql/seed-data.sql
 
 echo "Data seeded"
+
+# Run queries with different indexes
+mysql -h localhost -P 3306 --protocol=tcp -u root -p test --password=pass < ./scripts/run-queries-btree-hash-no-index.sql
